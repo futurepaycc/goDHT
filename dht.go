@@ -180,7 +180,7 @@ func (dht *DHT) init() {
 	dht.transactionManager = newTransactionManager(
 		dht.MaxTransactionCursor, dht)
 
-	go dht.transactionManager.run() //处理查询请求队列的入口?
+	go dht.transactionManager.run() //向外进行查询的队列处理启动
 	go dht.tokenManager.clear()
 	go dht.blackList.clear()
 }
