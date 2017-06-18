@@ -1,7 +1,10 @@
 package dht
 
 /**
-peerwire代表本资源节点，跟其它节点初始化交流任务
+peerwire代表本资源节点，跟其它节点进行区块数据传输
+目前应该只实现了将infohash内容转为bittorrent的bit
+扩展协议部分，非传输资源内容本身，但处理机制大体相仿
+应用参见spider示例
 */
 
 import (
