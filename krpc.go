@@ -1,5 +1,8 @@
 package dht
 
+/**
+krpc用来处理具体的网络请求
+*/
 import (
 	"errors"
 	"net"

@@ -173,14 +173,14 @@ func (dht *DHT) init() {
 		panic(err)
 	}
 
-	dht.conn = listener.(*net.UDPConn)
+	dht.conn = listener.(*net.UDPConn) //listener是PacketConn接口，从其中取出UDPConn结构体，注意这种语法
 	dht.routingTable = newRoutingTable(dht.KBucketSize, dht)
 	dht.peersManager = newPeersManager(dht)
 	dht.tokenManager = newTokenManager(dht.TokenExpiredAfter, dht)
 	dht.transactionManager = newTransactionManager(
 		dht.MaxTransactionCursor, dht)
 
-	go dht.transactionManager.run()
+	go dht.transactionManager.run() //处理查询请求队列的入口?
 	go dht.tokenManager.clear()
 	go dht.blackList.clear()
 }
@@ -272,9 +272,9 @@ func (dht *DHT) GetPeers(infoHash string) ([]*Peer, error) {
 
 // Run starts the dht.
 func (dht *DHT) Run() {
-	dht.init()
-	dht.listen()
-	dht.join()
+	dht.init()   //初始化，注册响应处理机制
+	dht.listen() //启动网络监听，生产监听内容供下面的for循环主体处理
+	dht.join()   //加入p2p网络
 
 	dht.Ready = true
 

@@ -1,5 +1,10 @@
 package dht
 
+/**
+路由表说明：
+1,存储节点(node)和资源(peer)信息
+2,提供加锁的同步信息访问
+*/
 import (
 	"container/heap"
 	"errors"
