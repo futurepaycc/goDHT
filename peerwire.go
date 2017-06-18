@@ -1,5 +1,9 @@
 package dht
 
+/**
+peerwire代表本资源节点，跟其它节点初始化交流任务
+*/
+
 import (
 	"bytes"
 	"crypto/sha1"
